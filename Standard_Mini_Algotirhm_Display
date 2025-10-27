@@ -1,0 +1,75 @@
+标准代码实现
+
+1. 数字翻转
+```
+int reverse(int n){
+	int rev=0;
+	while(n!=0){
+		rev=10*rev+n%10;
+		n/=10;
+	}
+	return rev;
+}
+```
+
+2. 字符串转换为数字
+(1  使用库实现（atoi，需要明确该函数的作用，标准格式与用法）
+```
+```
+(2 直接实现
+```
+#include<string.h>
+
+int toi(char* num){
+	int len=strlen(num);
+	int i,n=0;
+	for(i=0;i<len;i++){
+		n=n*10+num[i]-'0';
+	}
+	return n;
+}
+```
+
+3. N进制转换
+```
+#include<stdio.h>
+#include<string.h>
+#define BASE N //N自己定,宏定义最好全大写
+
+char* toN1(long long m){
+	int i;
+	static char nums[1000000]; //定义静态变量，保证这个数组在程序结束前不会被清除
+	for(i=0;m>0;i++){
+		nums[i]=(m%BASE<=9)? m%BASE+'0':m%BASE-10+'A';
+		m/=BASE;	
+	}
+	nums[i]='\0';//保证末尾是结束符
+	return nums;
+}//得出N进制表示结果，但是是从低位开始
+
+void toN2(char* nums){
+	int len=strlen(nums);
+	char temp;
+	for(int i=0;i<len/2;i++){
+		temp=nums[i];
+		nums[i]=nums[len-1-i];
+		nums[len-1-i]=temp;
+	}
+}//翻转一下之前得到的字符串，直接操作不用返还值
+```
+当然，这里的交换是数值类型的，所以还有以下几种方法：
+```
+void exchange1(int* a,int* b){   //这块用数据的地址传入作为参数，可以保证直接修改原本数据
+	*a=*a+*b;   //*a+=*b;
+	*b=*a-*b;
+	*a=*a-*b;   //*a-=*b;
+}
+
+void exchange2(int* a,int* b){
+	*a^=*b;    //A1=A^B
+	*b^=*a;    //B1=B^A1=A^B^B=A,因为对于任意一个数x^x=0,x^0=x，异或的性质
+	*a^=*b;    //A2=A1^B1=A^B^A=B,原因同上
+}
+//所以exchange2的转换思想可以直接写成一行;
+	a^=b^=a^=b;//在main函数里
+```
