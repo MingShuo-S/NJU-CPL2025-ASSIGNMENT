@@ -3,7 +3,7 @@
 
 bool map[8008][22];
 int height[22],H,l,W,k;
-int h,l=0;
+int h;
 
 void down(int flag,int pos){
     //pos，H在数组中需要-1，H表示方块数。
