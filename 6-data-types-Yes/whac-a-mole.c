@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #define CHECK(x) printf(">"#x":%d\n",x)
-
+//这里用的是法1：蛇形移动窗口法，非蛇形的已经不想写了多此一举,117ms
 int y2=101,x0=101,i,j;
 int dy[4]={1,-1,1,-1};//↖↙↗↘
 int dx[4]={-1,-1,1,1};
