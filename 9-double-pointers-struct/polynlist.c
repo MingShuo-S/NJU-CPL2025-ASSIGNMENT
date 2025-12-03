@@ -18,7 +18,7 @@ void multiple(){
     for(int i=pr;i>=0;i--){
         res[i]=0;
         for(int j=0;j<=i;j++){
-            res[i]+=P1[j]*P2[i-j];
+            res[i]+=P1[j]*P2[i-j];//这里数据太大的话P1用10004会爆掉哦亲，我***服了
         }
     }
 }
