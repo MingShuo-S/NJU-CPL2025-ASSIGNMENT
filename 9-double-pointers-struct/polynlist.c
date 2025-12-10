@@ -45,6 +45,8 @@ void print(){//每一个次数判断是否输出，符号 等
 }
 
 int main(){
+    freopen("2.in","r",stdin);
+    freopen("res.out","w",stdout);
     scanf("%d%d%s",&p1,&p2,var);
     for(int i=p1;i>=0;i--) scanf("%d",P1+i);
     for(int i=p2;i>=0;i--) scanf("%d",P2+i);
